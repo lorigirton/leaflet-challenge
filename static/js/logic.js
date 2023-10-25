@@ -15,12 +15,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to determine marker color based on earthquake depth
   function getColor(depth) {
-    return depth < 10 ? "#1a9850" :
-      depth < 30 ? "#91cf60" :
-      depth < 70 ? "#d9ef8b" :
-      depth < 300 ? "#fee08b" : "#d73027";
+    switch (true) {
+      case depth > 90:
+        return "#EA2C2C";
+      case depth > 70:
+        return "#EA822C";
+      case depth > 50:
+        return "#EE9C00";
+      case depth > 30:
+        return "#EECC00";
+      case depth > 10:
+        return "#D4EE00";
+      default:
+        return "#98EE00";
+    }
   }
-
   // Store our API endpoint as queryUrl.
   let queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
@@ -48,20 +57,36 @@ document.addEventListener('DOMContentLoaded', function () {
     let legend = L.control({ position: "bottomright" });
 
     //Function to update the legend based on depth
-    legend.onAdd = function (map) {
+    legend.onAdd = function() {
       let div = L.DomUtil.create('div', 'info legend');
-      let depths = [0, 10, 30, 70, 300];
       let labels = [];
 
       //Add legend title
       div.innerHTML = "<h3>Earthquake Depth</h3>";
     
-      //Loop through depth intervals and generate a label with a colored square for each interval
-      for (let i = 0; i < depths.length; i++) {
-        div.innerHTML +=
-        '<i class="depth-' + depths[i] + '"></i> ' +
-        depths[i] + (depths[i + 1] ? '&ndash;' + depths[i + 1] + ' km<br>' : '+ km');
-      }
+      // //Loop through depth intervals and generate a label with a colored square for each interval
+      // for (let i = 0; i < depths.length; i++) {
+      //   div.innerHTML +=
+      //   '<i class="depth-' + depths[i] + '"></i> ' +
+      //   depths[i] + (depths[i + 1] ? '&ndash;' + depths[i + 1] + ' km<br>' : '+ km');
+      // }
+
+      // Loop through our intervals and generate a label with a colored square for each interval.
+      let grades = [-10, 10, 30, 50, 70, 90];
+      let colors = [
+      "#98EE00",
+      "#D4EE00",
+      "#EECC00",
+      "#EE9C00",
+      "#EA822C",
+      "#EA2C2C"];
+      for (let i = 0; i < grades.length; i++) {
+      div.innerHTML += "<i style='background: "
+        + colors[i]
+        + "'></i> "
+        + grades[i]
+        + (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
+    }
       return div;
     };
 

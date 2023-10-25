@@ -23,7 +23,7 @@
   opacity: 0.8;
 }
 
-/* Depth colors*/
+/* Depth colors
 .info i.depth-10 {
   background: #1a9850;
 }
@@ -38,7 +38,7 @@
 }
 .info i.depth-300plus {
   background: #d73027;
-}
+} */
 
 /* Legend position */
 .legend {

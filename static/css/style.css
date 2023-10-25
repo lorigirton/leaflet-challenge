@@ -1,0 +1,76 @@
+/* Map container styles */
+#map {
+  height: 500px;
+}
+
+/* Legend styles */
+.info {
+  padding: 12px 16px;
+  font: 10px/12px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  text-align: left;
+}
+
+/* Legend color squares */
+.info i {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-right: 8px;
+  opacity: 0.8;
+}
+
+/* Depth colors*/
+.info i.depth-10 {
+  background: #1a9850;
+}
+.info.i.depth-30 {
+  background: #91cf60;
+}
+.info i.depth-70 {
+  background: #d9ef8b;
+}
+.info i.depth-300 {
+  background: #fee08b;
+}
+.info i.depth-300plus {
+  background: #d73027;
+}
+
+/* Legend position */
+.legend {
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Popup styles */
+.leaflet-popup-content-wrapper {
+  background: white;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+}
+
+.leaflet-popup-content {
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Control position for layers control */
+.leaflet-control-layers {
+  margin-top: 10px;
+  margin-left: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Control position for legend */
+.leaflet-bottom.leaflet-right .info {
+  bottom: 20px;
+  right: 20px;
+}
